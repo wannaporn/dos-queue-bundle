@@ -8,6 +8,7 @@
             "email": "nukboon@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "doctrine/orm": "~2.4",
         "liverbool/dos-resource-bundle": "0.15.*@dev",
