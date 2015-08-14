@@ -1,0 +1,11 @@
+services:
+    dos.queue.provider.doctrine_orm:
+        class: DoS\QueueBundle\Provider\DoctrineProvider
+        arguments:
+            - doctrine_orm
+            - []
+            - @dos.manager.queue_message
+            - @uecode_qpush.file_cache
+            - @monolog.logger.qpush
+        calls:
+            - [setRepositoryForClass, [%dos.model.queue_message.class%]]

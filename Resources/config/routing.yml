@@ -1,0 +1,3 @@
+do_s_queue_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: DoSQueueBundle:Default:index }

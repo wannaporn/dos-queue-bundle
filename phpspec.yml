@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: DoS\QueueBundle
+        psr4_prefix: DoS\QueueBundle
+        src_path: .
