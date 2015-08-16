@@ -129,6 +129,7 @@ class DoctrineProvider extends AbstractProvider
         $this->options = array_merge($this->options, $options);
         $results = $this->repisotory->createQueryBuilder('o')
             ->orderBy('o.id', $this->options['fifo_receive'] ? 'ASC' : 'DESC')
+            ->where('o.name = :name')->setParameter('name', $this->getNameWithPrefix())
             ->setMaxResults($this->options['messages_to_receive'])
             ->getQuery()->getResult()
         ;
