@@ -50,6 +50,11 @@ class DoctrineProvider extends AbstractProvider
      */
     protected $queueOptions = array();
 
+    /**
+     * @var bool
+     */
+    protected $postponeOnCli = true;
+
     public function __construct($name, array $options, $client, Cache $cache, Logger $logger)
     {
         $options = array_merge(array(
@@ -119,6 +124,12 @@ class DoctrineProvider extends AbstractProvider
         );
 
         $this->log(200, "Message has been published.", $context);
+
+        // if the message is generated from the cli the message is handled
+        // directly as there is no kernel.terminate in cli
+        if ($this->postponeOnCli && $this->isCommandLineInterface()) {
+            $this->receive(array('messages_to_receive' => 1));
+        }
     }
 
     /**
@@ -217,5 +228,15 @@ class DoctrineProvider extends AbstractProvider
         foreach($this->queueBuffers as $queue) {
             $this->receive();
         }
+    }
+
+    /**
+     * Check whether this Backend is run on the CLI.
+     *
+     * @return bool
+     */
+    protected function isCommandLineInterface()
+    {
+        return 'cli' === PHP_SAPI;
     }
 }

@@ -38,11 +38,6 @@ class CustomProviderPass implements CompilerPassInterface
                     'method' => "onKernelTerminate",
                     'priority' => -255
                 ))
-                ->addTag('kernel.event_listener', array(
-                    'event' => "console.terminate",
-                    'method' => "onKernelTerminate",
-                    'priority' => -255
-                ))
             ;
         }
     }
