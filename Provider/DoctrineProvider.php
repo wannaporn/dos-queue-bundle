@@ -138,12 +138,17 @@ class DoctrineProvider extends AbstractProvider
     public function receive(array $options = [])
     {
         $this->options = array_merge($this->options, $options);
-        $results = $this->repisotory->createQueryBuilder('o')
-            ->orderBy('o.id', $this->options['fifo_receive'] ? 'ASC' : 'DESC')
-            ->where('o.name = :name')->setParameter('name', $this->getNameWithPrefix())
-            ->setMaxResults($this->options['messages_to_receive'])
-            ->getQuery()->getResult()
-        ;
+
+        if (!empty($options['queues'])) {
+            $results = $options['queues'];
+        } else {
+            $results = $this->repisotory->createQueryBuilder('o')
+                ->orderBy('o.id', $this->options['fifo_receive'] ? 'ASC' : 'DESC')
+                ->where('o.name = :name')->setParameter('name', $this->getNameWithPrefix())
+                ->setMaxResults($this->options['messages_to_receive'])
+                ->getQuery()->getResult()
+            ;
+        }
 
         if (!count($results)) {
             $this->log(200, "No messages found in queue.");
@@ -225,9 +230,9 @@ class DoctrineProvider extends AbstractProvider
      */
     public function onKernelTerminate()
     {
-        foreach($this->queueBuffers as $queue) {
-            $this->receive();
-        }
+        $queues = $this->queueBuffers;
+        $this->receive(array('queues' => $queues));
+        $this->queueBuffers = [];
     }
 
     /**
