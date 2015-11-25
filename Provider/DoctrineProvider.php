@@ -6,6 +6,7 @@ use Doctrine\Common\Cache\Cache;
 use Doctrine\ORM\EntityManager;
 use DoS\QueueBundle\Model\QueueMessageInterface;
 use DoS\ResourceBundle\Doctrine\ORM\EntityRepository;
+use DoS\ResourceBundle\Factory\FactoryInterface;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Uecode\Bundle\QPushBundle\Event\Events;
@@ -34,6 +35,11 @@ class DoctrineProvider extends AbstractProvider
      * @var EntityRepository
      */
     protected $repisotory;
+
+    /**
+     * @var FactoryInterface
+     */
+    protected $factory;
 
     /**
      * @var string
@@ -80,12 +86,20 @@ class DoctrineProvider extends AbstractProvider
     }
 
     /**
+     * @param FactoryInterface $factory
+     */
+    public function setFactory(FactoryInterface $factory)
+    {
+        $this->factory = $factory;
+    }
+
+    /**
      * @return QueueMessageInterface
      */
     public function create()
     {
         $this->log(200, "Queue has been created.");
-        return $this->repisotory->createNew();
+        return $this->factory->createNew();
     }
 
     /**

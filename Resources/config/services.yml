@@ -9,3 +9,4 @@ services:
             - @monolog.logger.qpush
         calls:
             - [setRepositoryForClass, [%dos.model.queue_message.class%]]
+            - [setFactory, [%dos.factory.queue_message%]]
