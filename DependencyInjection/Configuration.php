@@ -20,14 +20,13 @@ class Configuration extends AbstractConfiguration
 
         $this->setDefaults($rootNode, array(
             'object_manager' => 'dos_queue',
-            'classes' => array(
+            'resources' => array(
                 'queue_message' => array(
-                    'model' => 'DoS\QueueBundle\Model\QueueMessage',
-                    'interface' => 'DoS\QueueBundle\Model\QueueMessageInterface',
+                    'classes' => array(
+                        'model' => 'DoS\QueueBundle\Model\QueueMessage',
+                        'interface' => 'DoS\QueueBundle\Model\QueueMessageInterface',
+                    ),
                 ),
-            ),
-            'validation_groups' => array(
-                'queue_message' => array()
             ),
         ));
 
