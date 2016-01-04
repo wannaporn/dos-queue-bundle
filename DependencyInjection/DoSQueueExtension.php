@@ -2,11 +2,11 @@
 
 namespace DoS\QueueBundle\DependencyInjection;
 
-use DoS\CernelBundle\Config\AbstractExtension;
+use DoS\ResourceBundle\DependencyInjection\AbstractResourceExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 
-class DoSQueueExtension extends AbstractExtension implements PrependExtensionInterface
+class DoSQueueExtension extends AbstractResourceExtension implements PrependExtensionInterface
 {
     protected $applicationName = 'dos';
 
