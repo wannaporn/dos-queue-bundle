@@ -2,13 +2,13 @@
 
 namespace DoS\QueueBundle\DependencyInjection;
 
-use DoS\CernelBundle\Config\AbstractConfiguration;
+use DoS\ResourceBundle\DependencyInjection\AbstractResourceConfiguration;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\ScalarNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
-class Configuration extends AbstractConfiguration
+class Configuration extends AbstractResourceConfiguration
 {
     /**
      * {@inheritdoc}

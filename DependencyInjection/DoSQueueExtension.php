@@ -26,11 +26,19 @@ class DoSQueueExtension extends AbstractExtension implements PrependExtensionInt
         $config = $container->getExtensionConfig($this->getAlias());
         $config = $this->processConfiguration($this->getBundleConfiguration(), $config);
 
+        // TODO: duplicate new connection.
         $container->prependExtensionConfig('doctrine', array(
             'orm' => array(
                 'entity_managers' => array(
                     $config['object_manager'] => array(
                         'connection' => $config['connection'],
+                        'mappings' => array(
+                            'DoSQueueBundle' => array(
+                                'type' => 'yml',
+                                'prefix' => 'DoS\QueueBundle\Model',
+                                'dir' => '%kernel.root_dir%/../vendor/liverbool/dos-queue-bundle/Resources/config/doctrine/model',
+                            )
+                        ),
                         'filters' => array(
                             'softdeleteable' => array(
                                 'class' => 'Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter',
