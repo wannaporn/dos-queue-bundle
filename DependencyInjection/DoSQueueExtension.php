@@ -30,7 +30,7 @@ class DoSQueueExtension extends AbstractResourceExtension implements PrependExte
         $container->prependExtensionConfig('doctrine', array(
             'orm' => array(
                 'entity_managers' => array(
-                    $config['object_manager'] => array(
+                    $config['resources']['queue_message']['object_manager'] => array(
                         'connection' => $config['connection'],
                         'mappings' => array(
                             'DoSQueueBundle' => array(

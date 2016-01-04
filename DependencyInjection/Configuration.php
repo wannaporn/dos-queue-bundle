@@ -19,9 +19,9 @@ class Configuration extends AbstractResourceConfiguration
         $rootNode = $treeBuilder->root('dos_queue');
 
         $this->setDefaults($rootNode, array(
-            'object_manager' => 'dos_queue',
             'resources' => array(
                 'queue_message' => array(
+                    'object_manager' => 'dos_queue',
                     'classes' => array(
                         'model' => 'DoS\QueueBundle\Model\QueueMessage',
                         'interface' => 'DoS\QueueBundle\Model\QueueMessageInterface',
