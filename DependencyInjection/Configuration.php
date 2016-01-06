@@ -21,7 +21,9 @@ class Configuration extends AbstractResourceConfiguration
         $this->setDefaults($rootNode, array(
             'resources' => array(
                 'queue_message' => array(
-                    'object_manager' => 'dos_queue',
+                    'options' => array(
+                        'object_manager' => 'dos_queue',
+                    ),
                     'classes' => array(
                         'model' => 'DoS\QueueBundle\Model\QueueMessage',
                         'interface' => 'DoS\QueueBundle\Model\QueueMessageInterface',
