@@ -2,11 +2,10 @@
 
 namespace DoS\QueueBundle\Model;
 
-use DoS\ResourceBundle\Model\SoftDeletableInterface;
 use DoS\ResourceBundle\Model\TimestampableInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
-interface QueueMessageInterface extends TimestampableInterface, SoftDeletableInterface, ResourceInterface
+interface QueueMessageInterface extends TimestampableInterface, ResourceInterface
 {
     /**
      * @return int

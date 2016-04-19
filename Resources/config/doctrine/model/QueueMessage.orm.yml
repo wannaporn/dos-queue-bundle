@@ -2,11 +2,6 @@ DoS\QueueBundle\Model\QueueMessage:
     type: mappedSuperclass
     table: dos_queue_message
 
-    gedmo:
-        soft_deleteable:
-            field_name: deletedAt
-            time_aware: false
-
     id:
         id:
             id: true
@@ -39,8 +34,3 @@ DoS\QueueBundle\Model\QueueMessage:
             gedmo:
                 timestampable:
                     on: update
-
-        deletedAt:
-            type: datetime
-            column: deleted_at
-            nullable: true

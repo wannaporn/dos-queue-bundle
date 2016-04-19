@@ -3,12 +3,10 @@
 namespace DoS\QueueBundle\Model;
 
 use DoS\ResourceBundle\Model\TimestampableTrait;
-use DoS\SMSBundle\Model\SoftDeleteTrait;
 
 class QueueMessage implements QueueMessageInterface
 {
     use TimestampableTrait;
-    use SoftDeleteTrait;
 
     /**
      * @var int
