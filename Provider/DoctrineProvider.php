@@ -187,8 +187,7 @@ class DoctrineProvider extends AbstractProvider
             );
 
             // recived then delete.
-            $message->setDeletedAt(new \DateTime());
-            $this->dispatcher->persist($message);
+            $this->dispatcher->remove($message);
         }
 
         $this->dispatcher->flush();
